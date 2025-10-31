@@ -1,50 +1,53 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
+  const {user} = useSelector((state) => state.auth);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div >
+    <div>
       {/* Navbar */}
-      <nav className="fixed   flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur text-[#302031] text-sm">
-        <Link to="/" className="font-bold text-2xl ">
+      <nav className="fixed flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur text-[#302031] text-sm z-20">
+        <Link to="/" className="font-bold text-2xl z-20 relative">
           <span className="text-purple-600">Resume</span><span className="text-black">Craft</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8 transition duration-500">
-          <Link to="/" className="hover:text-purple-500 transition">
-            Home
-          </Link>
-          <Link to="/products" className="hover:text-purple-500 transition">
-            Features
-          </Link>
-          <Link to="/stories" className="hover:text-purple-500 transition">
-            Testimonials
-          </Link>
-          <Link to="/pricing" className="hover:text-purple-500 transition">
-            Contact
-          </Link>
+        <div className="hidden md:flex items-center gap-8 transition duration-500 z-20 relative">
+          <Link to="/" className="hover:text-purple-500 transition">Home</Link>
+          <Link to="/products" className="hover:text-purple-500 transition">Features</Link>
+          <Link to="/stories" className="hover:text-purple-500 transition">Testimonials</Link>
+          <Link to="/pricing" className="hover:text-purple-500 transition">Contact</Link>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 z-20 relative">
           <Link
             to="/app?state=register"
-            className="hidden md:block px-6 py-2.5 bg-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full"
+            className="hidden md:block px-6 py-2.5 bg-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full relative z-20"
+            hidden={user}
           >
             Get Started
           </Link>
           <Link
             to="/app?state=login"
-            className="hidden md:block px-6 py-2.5 border border-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full"
+            className="hidden md:block px-6 py-2.5 border border-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full relative z-20"
+            hidden={user}
           >
             Login
+          </Link>
+          <Link
+            to="/app"
+            className="hidden md:block px-6 py-2.5 bg-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full relative z-20"
+            hidden={!user}
+          >
+            Dashboard
           </Link>
         </div>
 
         <button
           onClick={() => setMenuOpen(true)}
-          className="md:hidden active:scale-90 transition"
+          className="md:hidden active:scale-90 transition z-20 relative"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,9 +69,9 @@ const HeroSection = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0  bg-black/40 text-white backdrop-blur flex flex-col items-center justify-center text-lg gap-8 md:hidden transition-transform duration-300 ${
+        className={`fixed inset-0 bg-black/40 text-white backdrop-blur flex flex-col items-center justify-center text-lg gap-8 md:hidden transition-transform duration-300 ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        } z-30`}
       >
         <Link to="/">Home</Link>
         <Link to="/products">Features</Link>
@@ -97,9 +100,9 @@ const HeroSection = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBg.svg')] bg-cover  flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-32 bg-slate- text-[#302031]">
-        <div className="absolute top-28 -z-1 left-1/4 size-72 bg-[#9D81B3] blur-[300px]" />
-        <div className="flex items-center mt-44">
+      <div className="relative bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBg.svg')] bg-cover flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-32 text-[#302031]">
+        <div className="absolute top-28 left-1/4 size-72 bg-[#9D81B3] blur-[300px] -z-10" />
+        <div className="flex items-center mt-44 relative z-10">
           <div className="flex -space-x-2 pr-3">
             <img
               src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200"
@@ -123,24 +126,28 @@ const HeroSection = () => {
             />
           </div>
           <div>
-            <p className="text-sm text-[#302031]">
-              Used by <span className="font-medium text-[#302031]">100,000+</span>{" "}
-              users
+            <p className="text-sm">
+              Used by <span className="font-medium">100,000+</span> users
             </p>
           </div>
         </div>
 
-        <h1 className="text-5xl leading-[68px] md:text-6xl md:leading-[84px] font-medium  text-center">
-         Create Perfect Resumes with 
+        <h1 className="text-5xl leading-[68px] md:text-6xl md:leading-[84px] font-medium text-center z-10 relative">
+          Create Perfect Resumes with
         </h1>
-        <p className="text-5xl leading-[68px] md:text-6xl md:leading-[84px] font-medium  text-center">AI Magic</p>
+        <p className="text-5xl leading-[68px] md:text-6xl md:leading-[84px] font-medium text-center z-10 relative">
+          AI Magic
+        </p>
 
-        <p className="text-base text-center text-[#302031] max-w-lg">
+        <p className="text-base text-center max-w-lg z-10 relative">
           SmartResume uses AI to generate polished, professional resumes. Users can customize templates, auto-generate content, and download final resumes instantly.
         </p>
 
-        <div className="flex items-center gap-4 mt-8">
-          <Link to='/app' className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-7 py-3">
+        <div className="flex items-center gap-4 mt-8 relative z-10">
+          <Link
+            to="/app?state=register"
+            className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-7 py-3"
+          >
             Get started
           </Link>
           <button className="flex items-center gap-2 border border-purple-900 hover:bg-purple-950/50 transition rounded-full px-6 h-11">
@@ -164,7 +171,7 @@ const HeroSection = () => {
 
         <img
           src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-2.png"
-          className="w-full rounded-[15px] max-w-4xl mt-16"
+          className="w-full rounded-[15px] max-w-4xl mt-16 relative z-10"
           alt="hero section showcase"
         />
       </div>

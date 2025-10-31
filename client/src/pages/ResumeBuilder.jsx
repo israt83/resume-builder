@@ -79,11 +79,11 @@ const ResumeBuilder = () => {
   return (
     <div>
       <div>
-        <Link to={'/app'} className='inline-flex gap-2 items-center text-sky-500 hover:text-slate-500 transition-all'>
-        <ArrowLeftIcon className='size-4'/> Back to Dashboard
+        <Link to={'/app'} className='inline-flex mt-5 ml-20 gap-2 items-center text-sky-500 hover:text-slate-500 transition-all'>
+        <ArrowLeftIcon className='size-4 '/> Back to Dashboard
         </Link>
       </div>
-      <div className='max-w-7xl mx-auto px-4 pb-8'>
+      <div className='max-w-7xl mx-auto px-4 pb-8 mt-10'>
         <div className='grid grid-cols-12 gap-8'>
             {/* Left Panel -Form */}
             <div className='relative lg:col-span-5 rounded-lg overflow-hidden'>
@@ -147,7 +147,7 @@ const ResumeBuilder = () => {
                 </div>
             </div>
             {/* Right Panel -Preview */}
-            <div className='lg:col-span-7 max-lg:mt-6'>
+            <div className='lg:col-span-7 '>
                     <div className='relative w-full'>
                       <div className='absolute bottom-3 left-0 right-0 flex items-center justify-end gap-2'>
                         {resumeData.public && (
