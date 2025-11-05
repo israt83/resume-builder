@@ -40,26 +40,30 @@ import aiRouter from './routes/aiRoutes.js';
 
 dotenv.config();
 
-// Database connection
+// Database Connection
 await connectDB();
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
+// Test Route
 app.get('/', (req, res) => {
-  res.send('Server is running...');
+    res.send('Server is running...');
 });
 
+// API Routes
 app.use('/api/users', userRouter);
 app.use('/api/resumes', resumeRouter);
 app.use('/api/ai', aiRouter);
 
-// Conditional listen for local development
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-}
-
+// ✅ Export for Vercel serverless
 export default app;
+
+// ✅ Only run locally
+if (process.env.NODE_ENV !== "production") {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`Local server running on port ${PORT}`);
+    });
+}
