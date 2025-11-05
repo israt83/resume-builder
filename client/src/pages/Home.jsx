@@ -1,4 +1,5 @@
 
+
 import Banner from '../components/Home/Banner'
 import Contact from '../components/Home/Contact'
 import Featured from '../components/Home/Featured'
@@ -9,12 +10,12 @@ import Testimonial from '../components/Home/Testimonal/Testimonal'
 const Home = () => {
   return (
     <div>
-        <Banner/>
-        <HeroSection/>
-        <Featured/>
-        <Testimonial/>
-        <Contact/>
-        <Footer/>
+        <Banner id="home"/>
+        <HeroSection id="home"/>
+        <Featured id="features"/>
+        <Testimonial id="testimonials"/>
+        <Contact id="contact"/>
+        <Footer />
     </div>
   )
 }

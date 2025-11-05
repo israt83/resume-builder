@@ -105,7 +105,7 @@ const Dashboard = () => {
     <div>
       <div className="max-w-7xl mx-auto px-4 py-8">
         <p className="text-2xl font-medium mb-6 bg-gradient-to-r from-slate-600 to-slate-700 bg-clip-text text-transparent sm:hidden">
-          Welcome, Israt
+          Welcome, {user?.name}
         </p>
 
         {/* Create / Upload Buttons */}
@@ -172,8 +172,8 @@ const Dashboard = () => {
               <form onSubmit={createResume} onClick={() => setShowCreatResume(false)} className="fixed inset-0 bg-black/70 backdrop-blur-2xl bg-opacity-50 z-10 flex items-center justify-center ">
                 <div onClick={e => e.stopPropagation()} className="relative bg-slate-50 border shadow-md rounded-lg w-full max-w-sm p-6">
                   <h2 className="text-xl font-bold mb-4">Create Resume</h2>
-                  <input  onChange={(e)=>setTitle(e.target.value)} value={title}  type="text" placeholder="Enter resume title" className="w-full px-4 py-2 mb-4 focus:border-b-green-600 ring-green-600" required />
-                  <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">Create Resume</button>
+                  <input  onChange={(e)=>setTitle(e.target.value)} value={title}  type="text" placeholder="Enter resume title" className="w-full px-4 py-2 mb-4 focus:border-b-purple-600 ring-purple-600" required />
+                  <button className="w-full py-2 bg-[#9D81B3]  text-white rounded hover:bg-purple-700 transition-colors">Create Resume</button>
                   <XIcon className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 cursor-pointer transition-colors" onClick={() => {setShowCreatResume(false); setTitle("")}}/>
                 </div>
               </form>
@@ -185,13 +185,13 @@ const Dashboard = () => {
               <form onSubmit={uploadResume} onClick={() => setShowUploadResume(false)} className="fixed inset-0 bg-black/70 backdrop-blur-2xl bg-opacity-50 z-10 flex items-center justify-center ">
                 <div onClick={e => e.stopPropagation()} className="relative bg-slate-50 border shadow-md rounded-lg w-full max-w-sm p-6">
                   <h2 className="text-xl font-bold mb-4">Upload Resume</h2>
-                  <input onChange={(e)=>setTitle(e.target.value)} value={title} type="text" placeholder="Enter resume title" className="w-full px-4 py-2 mb-4 focus:border-b-green-600 ring-green-600" required />
+                  <input onChange={(e)=>setTitle(e.target.value)} value={title} type="text" placeholder="Enter resume title" className="w-full px-4 py-2 mb-4 focus:border-b-purple-600 ring-purple-600" required />
                   <div>
                     <label htmlFor="resume-input" className="block text-sm text-slate-700">
                       Select resume file
-                         <div className="flex flex-col items-center justify-center gap-2 border group text-slate-400 border-slate-400 border-dashed rounded-md p-4 py-10 my-4 hover:border-green-500 hover:text-green-700 transition-colors cursor-pointer">
+                         <div className="flex flex-col items-center justify-center gap-2 border group text-slate-400 border-slate-400 border-dashed rounded-md p-4 py-10 my-4 hover:hover:bg-purple-700  transition-colors cursor-pointer">
                       {resume ? (
-                        <p className="text-green-700">{resume.name}</p>  
+                        <p className="bg-[#9D81B3] ">{resume.name}</p>  
                       ) : (
                         <>
                         <UploadCloud className="size-14 stroke-1"/>
@@ -203,7 +203,7 @@ const Dashboard = () => {
                     </label>
                    <input type="file" id="resume-input" accept=".pdf" hidden onChange={(e) => setResume(e.target.files[0])}/>
                   </div>
-                  <button disabled={isLoading} className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors flex items-center justify-center gap-2">
+                  <button disabled={isLoading} className="w-full py-2 bg-[#9D81B3]  text-white rounded hover:bg-purple-700 transition-colors flex items-center justify-center gap-2">
                     {isLoading && <LoaderCircleIcon className="animate-spin size-4 text-white"/>}
                     {isLoading ? 'Uploading...' : 'Upload Resume'}
                   </button>
@@ -223,11 +223,11 @@ const Dashboard = () => {
           value={title}
           type="text"
           placeholder="Enter resume title"
-          className="w-full px-4 py-2 mb-4 focus:border-b-green-600 ring-green-600"
+          className="w-full px-4 py-2 mb-4 focus:border-b-purple-600 ring-purple-600"
           required
         />
 
-        <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+        <button className="w-full py-2 bg-[#9D81B3]  text-white rounded hover:bg-purple-700 transition-colors">
           Update
         </button>
 

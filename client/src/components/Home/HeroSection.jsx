@@ -1,50 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-
+import heroImage from '../../assets/heroImage.png'
 const HeroSection = () => {
-  const {user} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 60) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
 
   return (
-    <div>
+    <div id="home">
       {/* Navbar */}
-      <nav className="fixed flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur text-[#302031] text-sm z-20">
-        <Link to="/" className="font-bold text-2xl z-20 relative">
-          <span className="text-purple-600">Resume</span><span className="text-black">Craft</span>
-        </Link>
+     <nav
+  className={`${isSticky ? "fixed top-0 left-0 bg-white backdrop-blur shadow-md" : "relative"} 
+  flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-32 transition-all text-[#302031] text-sm z-20`}
+>
+ 
+        <a href="#home" className="font-bold text-2xl z-20 relative">
+          <span className="text-purple-600">Resume</span>
+          <span className="text-black">Craft</span>
+        </a>
 
-        <div className="hidden md:flex items-center gap-8 transition duration-500 z-20 relative">
-          <Link to="/" className="hover:text-purple-500 transition">Home</Link>
-          <Link to="/products" className="hover:text-purple-500 transition">Features</Link>
-          <Link to="/stories" className="hover:text-purple-500 transition">Testimonials</Link>
-          <Link to="/pricing" className="hover:text-purple-500 transition">Contact</Link>
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8 transition duration-500 z-20 relative text-base font-semibold">
+          <a href="#home" className="hover:text-purple-500 transition">Home</a>
+          <a href="#features" className="hover:text-purple-500 transition">Features</a>
+          <a href="#testimonials" className="hover:text-purple-500 transition">Testimonials</a>
+          <a href="#contact" className="hover:text-purple-500 transition">Contact</a>
         </div>
 
+        {/* Right Buttons */}
         <div className="flex gap-2 z-20 relative">
-          <Link
-            to="/app?state=register"
-            className="hidden md:block px-6 py-2.5 bg-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full relative z-20"
+          <a
+            href="/app?state=register"
+            className="hidden md:block px-6 py-2.5 bg-[#9D81B3] font-semibold text-white active:scale-95 transition-all rounded-full relative z-20"
             hidden={user}
           >
             Get Started
-          </Link>
-          <Link
-            to="/app?state=login"
-            className="hidden md:block px-6 py-2.5 border border-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full relative z-20"
+          </a>
+          <a
+            href="/app?state=login"
+            className="hidden md:block px-6 py-2.5 border border-purple-900 hover:bg-purple-950/50 active:scale-95 transition-all rounded-full relative z-20 text-black font-semibold"
             hidden={user}
           >
             Login
-          </Link>
-          <Link
-            to="/app"
-            className="hidden md:block px-6 py-2.5 bg-purple-600 hover:bg-purple-700 active:scale-95 transition-all rounded-full relative z-20"
+          </a>
+          <a
+            href="/app"
+            className="hidden md:block px-6 py-2.5 bg-[#9D81B3] hover:bg-purple-700 active:scale-95 transition-all rounded-full relative z-20 text-white font-semibold"
             hidden={!user}
           >
             Dashboard
-          </Link>
+          </a>
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setMenuOpen(true)}
           className="md:hidden active:scale-90 transition z-20 relative"
@@ -73,10 +95,10 @@ const HeroSection = () => {
           menuOpen ? "translate-x-0" : "-translate-x-full"
         } z-30`}
       >
-        <Link to="/">Home</Link>
-        <Link to="/products">Features</Link>
-        <Link to="/stories">Testimonials</Link>
-        <Link to="/pricing">Contact</Link>
+        <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
+        <a href="#features" onClick={() => setMenuOpen(false)}>Features</a>
+        <a href="#testimonials" onClick={() => setMenuOpen(false)}>Testimonials</a>
+        <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
 
         <button
           onClick={() => setMenuOpen(false)}
@@ -100,7 +122,10 @@ const HeroSection = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBg.svg')] bg-cover flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-32 text-[#302031]">
+      <div
+        id="hero"
+        className="relative bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBg.svg')] bg-cover flex flex-col items-center justify-center text-sm px-4 md:px-16 lg:px-24 xl:px-32 text-[#302031]"
+      >
         <div className="absolute top-28 left-1/4 size-72 bg-[#9D81B3] blur-[300px] -z-10" />
         <div className="flex items-center mt-44 relative z-10">
           <div className="flex -space-x-2 pr-3">
@@ -144,13 +169,13 @@ const HeroSection = () => {
         </p>
 
         <div className="flex items-center gap-4 mt-8 relative z-10">
-          <Link
-            to="/app?state=register"
-            className="bg-purple-600 hover:bg-purple-700 text-white rounded-full px-7 py-3"
+          <a
+            href="/app?state=register"
+            className="bg-[#9D81B3] hover:bg-purple-950/50 text-white  font-semibold rounded-full px-7 py-3"
           >
             Get started
-          </Link>
-          <button className="flex items-center gap-2 border border-purple-900 hover:bg-purple-950/50 transition rounded-full px-6 h-11">
+          </a>
+          <button className="flex items-center font-semibold gap-2 border border-purple-900 hover:bg-purple-950/50 transition rounded-full px-6 h-11">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -170,7 +195,7 @@ const HeroSection = () => {
         </div>
 
         <img
-          src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/hero-section-showcase-2.png"
+          src={heroImage}
           className="w-full rounded-[15px] max-w-4xl mt-16 relative z-10"
           alt="hero section showcase"
         />

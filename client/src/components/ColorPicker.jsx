@@ -3,16 +3,12 @@ import React, { useState } from "react";
 
 const ColorPicker = ({ selectedColor, onChange }) => {
   const colors = [
-    { name: "Blue", value: "#3b82f6" },
-    { name: "Red", value: "#ef4444" },
-    { name: "Green", value: "#22c55e" },
-    { name: "Yellow", value: "#f59e0b" },
-    { name: "Orange", value: "#f97316" },
+    { name: "Sky Blue", value: "#38BDF8" },
+    { name: "Gray", value: "#475569" },
+    { name: "Navy", value: "#0A2540" },
+    { name: "Blue", value: "#3B82F6" },
     { name: "Purple", value: "#8b5cf6" },
-    { name: "Pink", value: "#ec4899" },
-    { name: "Teal", value: "#14b8a6" },
-    { name: "Indigo", value: "#3b82f6" },
-    { name: "Black", value: "#1F2937" },
+    { name: "Black", value: "#000000" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);

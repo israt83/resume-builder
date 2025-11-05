@@ -51,7 +51,7 @@ const Testimonial = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50 font-[Poppins]">
+    <section id="testimonials" className="py-20 relative bg-[url('https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/gradientBg.svg')] bg-cover bg-no-repeat font-[Poppins]">
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 text-base text-[#302031] bg-[hsl(273,29%,94%)] border border-[#746085] rounded-full px-6 py-1.5 mx-auto">
           <Zap width={14} />

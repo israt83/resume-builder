@@ -1,4 +1,4 @@
-import { BriefcaseBusiness, Globe, Linkedin, Mail, MapPin, Phone, User } from 'lucide-react'
+import { BriefcaseBusiness, GithubIcon, Globe, Linkedin, Mail, MapPin, Phone, User } from 'lucide-react'
 import React from 'react'
 
 const PersonalInfoForm = ({data ,onchange,removeBackground,setRemoveBackground}) => {
@@ -16,6 +16,7 @@ const PersonalInfoForm = ({data ,onchange,removeBackground,setRemoveBackground})
         {key: "location" , label: "Location" ,icon:MapPin, type:"text" },
         {key: "profession" , label: "Profession" ,icon:BriefcaseBusiness, type:"text" },
         {key: "linkedin" , label: "Linkedin" ,icon:Linkedin, type:"url" },
+        {key: "github" , label: "github" ,icon:GithubIcon, type:"url" },
         {key: "website" , label: "Personal Website" ,icon:Globe, type:"url" },
       
     ]
@@ -42,7 +43,7 @@ const PersonalInfoForm = ({data ,onchange,removeBackground,setRemoveBackground})
                     <p>Remove Background</p>
                     <label className='relative inline-flex items-center cursor-pointer text-gray-900 gap-3'>
                         <input type="checkbox" className='sr-only peer'  onChange={(prev) => setRemoveBackground(!prev)} checked={removeBackground} />
-                        <div className='w-9 h-5 bg-slate-300 rounded-full peer peer-checked:bg-green-600 transition-colors duration-200'>
+                        <div className='w-9 h-5 bg-slate-300 rounded-full peer peer-checked:bg-purple-600 transition-colors duration-200'>
 
                         </div>
                         <span className='dot absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform duration-200 ease-in-out peer-checked:translate-x-4'></span>

@@ -1,0 +1,55 @@
+@media print {
+  @page {
+    size: A4;       /* enforce A4 */
+    margin: 0;      /* remove default margin */
+  }
+
+  body * {
+    visibility: hidden; /* hide everything else */
+  }
+
+  #resume, #resume * {
+    visibility: visible;
+  }
+
+  #resume {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;      /* A4 width */
+    height: 297mm;     /* A4 height */
+    overflow: hidden;  /* prevent spilling */
+   
+    box-sizing: border-box;
+    font-size: 12px;   /* reduce font for print */
+    line-height: 1.2;  /* reduce spacing */
+  }
+
+  #resume h1 {
+    font-size: 18pt;
+  }
+
+  #resume h2 {
+    font-size: 14pt;
+  }
+
+  #resume h3, #resume h4 {
+    font-size: 12pt;
+  }
+
+  #resume p, #resume li {
+    font-size: 10pt;
+  }
+
+  #resume ul {
+    margin: 0;
+    padding-left: 15px;
+  }
+
+  /* Reduce spacing for borders/margins only in print */
+  .border-b, .mb-1, .mb-2, .space-y-4, .space-y-6 {
+    margin-bottom: 2px !important;
+    padding-bottom: 2px !important;
+  }
+}
+
