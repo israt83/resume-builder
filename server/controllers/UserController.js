@@ -109,7 +109,8 @@ export const getUserById = async (req, res) => {
         // return user
 
         user.password = undefined;
-        return res.status(200).json({ user });
+        // return res.status(200).json({ user });
+        return res.status(200).json({ success: true, user });
 
     } catch (error) {
         res.status(400).json({ message: error.message});
